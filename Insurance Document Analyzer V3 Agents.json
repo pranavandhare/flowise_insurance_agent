@@ -1,0 +1,907 @@
+{
+  "nodes": [
+    {
+      "id": "startAgentflow_0",
+      "type": "agentFlow",
+      "position": {
+        "x": -1352.0420877010647,
+        "y": 107.74745166244347
+      },
+      "data": {
+        "id": "startAgentflow_0",
+        "label": "Node 1: Start (Form Input)",
+        "version": 1.1,
+        "name": "startAgentflow",
+        "type": "Start",
+        "color": "#7EE787",
+        "hideInput": true,
+        "baseClasses": [
+          "Start"
+        ],
+        "category": "Agent Flows",
+        "description": "Starting point of the agentflow",
+        "inputParams": [
+          {
+            "label": "Input Type",
+            "name": "startInputType",
+            "type": "options",
+            "options": [
+              {
+                "label": "Chat Input",
+                "name": "chatInput",
+                "description": "Start the conversation with chat input"
+              },
+              {
+                "label": "Form Input",
+                "name": "formInput",
+                "description": "Start the workflow with form inputs"
+              }
+            ],
+            "default": "chatInput",
+            "id": "startAgentflow_0-input-startInputType-options",
+            "display": true
+          },
+          {
+            "label": "Form Title",
+            "name": "formTitle",
+            "type": "string",
+            "placeholder": "Please Fill Out The Form",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formTitle-string",
+            "display": true
+          },
+          {
+            "label": "Form Description",
+            "name": "formDescription",
+            "type": "string",
+            "placeholder": "Complete all fields below to continue",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formDescription-string",
+            "display": true
+          },
+          {
+            "label": "Form Input Types",
+            "name": "formInputTypes",
+            "description": "Specify the type of form input",
+            "type": "array",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Options",
+                    "name": "options"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Label",
+                "name": "label",
+                "type": "string",
+                "placeholder": "Label for the input"
+              },
+              {
+                "label": "Variable Name",
+                "name": "name",
+                "type": "string",
+                "placeholder": "Variable name for the input (must be camel case)",
+                "description": "Variable name must be camel case. For example: firstName, lastName, etc."
+              },
+              {
+                "label": "Add Options",
+                "name": "addOptions",
+                "type": "array",
+                "show": {
+                  "formInputTypes[$index].type": "options"
+                },
+                "array": [
+                  {
+                    "label": "Option",
+                    "name": "option",
+                    "type": "string"
+                  }
+                ]
+              }
+            ],
+            "id": "startAgentflow_0-input-formInputTypes-array",
+            "display": true
+          },
+          {
+            "label": "Ephemeral Memory",
+            "name": "startEphemeralMemory",
+            "type": "boolean",
+            "description": "Start fresh for every execution without past chat history",
+            "optional": true,
+            "id": "startAgentflow_0-input-startEphemeralMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Flow State",
+            "name": "startState",
+            "description": "Runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "placeholder": "Foo"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "placeholder": "Bar",
+                "optional": true
+              }
+            ],
+            "id": "startAgentflow_0-input-startState-array",
+            "display": true
+          },
+          {
+            "label": "Persist State",
+            "name": "startPersistState",
+            "type": "boolean",
+            "description": "Persist the state in the same session",
+            "optional": true,
+            "id": "startAgentflow_0-input-startPersistState-boolean",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "startInputType": "formInput",
+          "formTitle": "Customer Document Analysis",
+          "formDescription": "Complete all fields below to continue",
+          "formInputTypes": [
+            {
+              "type": "number",
+              "label": "Customer ID",
+              "name": "customer_id",
+              "addOptions": ""
+            }
+          ],
+          "startEphemeralMemory": "",
+          "startState": [
+            {
+              "key": "documents",
+              "value": "[]"
+            }
+          ],
+          "startPersistState": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "startAgentflow_0-output-startAgentflow",
+            "label": "Start",
+            "name": "startAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 239,
+      "height": 66,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -1352.0420877010647,
+        "y": 107.74745166244347
+      },
+      "dragging": false
+    },
+    {
+      "id": "httpAgentflow_0",
+      "position": {
+        "x": -1047.5956224093657,
+        "y": 106.99745166244347
+      },
+      "data": {
+        "id": "httpAgentflow_0",
+        "label": "Node 2: HTTP Supabase Fetch",
+        "version": 1.1,
+        "name": "httpAgentflow",
+        "type": "HTTP",
+        "color": "#FF7F7F",
+        "baseClasses": [
+          "HTTP"
+        ],
+        "category": "Agent Flows",
+        "description": "Send a HTTP request",
+        "inputParams": [
+          {
+            "label": "HTTP Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "httpBasicAuth",
+              "httpBearerToken",
+              "httpApiKey"
+            ],
+            "optional": true,
+            "id": "httpAgentflow_0-input-credential-credential",
+            "display": true
+          },
+          {
+            "label": "Method",
+            "name": "method",
+            "type": "options",
+            "options": [
+              {
+                "label": "GET",
+                "name": "GET"
+              },
+              {
+                "label": "POST",
+                "name": "POST"
+              },
+              {
+                "label": "PUT",
+                "name": "PUT"
+              },
+              {
+                "label": "DELETE",
+                "name": "DELETE"
+              },
+              {
+                "label": "PATCH",
+                "name": "PATCH"
+              }
+            ],
+            "default": "GET",
+            "id": "httpAgentflow_0-input-method-options",
+            "display": true
+          },
+          {
+            "label": "URL",
+            "name": "url",
+            "type": "string",
+            "id": "httpAgentflow_0-input-url-string",
+            "display": true
+          },
+          {
+            "label": "Headers",
+            "name": "headers",
+            "type": "array",
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "default": ""
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "default": "",
+                "acceptVariable": true
+              }
+            ],
+            "optional": true,
+            "id": "httpAgentflow_0-input-headers-array",
+            "display": true
+          },
+          {
+            "label": "Query Params",
+            "name": "queryParams",
+            "type": "array",
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "default": ""
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "default": "",
+                "acceptVariable": true
+              }
+            ],
+            "optional": true,
+            "id": "httpAgentflow_0-input-queryParams-array",
+            "display": true
+          },
+          {
+            "label": "Body Type",
+            "name": "bodyType",
+            "type": "options",
+            "options": [
+              {
+                "label": "JSON",
+                "name": "json"
+              },
+              {
+                "label": "Raw",
+                "name": "raw"
+              },
+              {
+                "label": "Form Data",
+                "name": "formData"
+              },
+              {
+                "label": "x-www-form-urlencoded",
+                "name": "xWwwFormUrlencoded"
+              }
+            ],
+            "optional": true,
+            "id": "httpAgentflow_0-input-bodyType-options",
+            "display": true
+          },
+          {
+            "label": "Body",
+            "name": "body",
+            "type": "string",
+            "acceptVariable": true,
+            "rows": 4,
+            "show": {
+              "bodyType": [
+                "raw",
+                "json"
+              ]
+            },
+            "optional": true,
+            "id": "httpAgentflow_0-input-body-string",
+            "display": false
+          },
+          {
+            "label": "Body",
+            "name": "body",
+            "type": "array",
+            "acceptVariable": true,
+            "show": {
+              "bodyType": [
+                "xWwwFormUrlencoded",
+                "formData"
+              ]
+            },
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "default": ""
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "default": "",
+                "acceptVariable": true
+              }
+            ],
+            "optional": true,
+            "id": "httpAgentflow_0-input-body-array",
+            "display": false
+          },
+          {
+            "label": "Response Type",
+            "name": "responseType",
+            "type": "options",
+            "options": [
+              {
+                "label": "JSON",
+                "name": "json"
+              },
+              {
+                "label": "Text",
+                "name": "text"
+              },
+              {
+                "label": "Array Buffer",
+                "name": "arraybuffer"
+              },
+              {
+                "label": "Raw (Base64)",
+                "name": "base64"
+              }
+            ],
+            "optional": true,
+            "id": "httpAgentflow_0-input-responseType-options",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "method": "GET",
+          "url": "https://nznobqxdsdxaqmocqouv.supabase.co/rest/v1/customer_documents",
+          "headers": [],
+          "queryParams": [
+            {
+              "key": "select",
+              "value": "<p>*</p>"
+            }
+          ],
+          "bodyType": "",
+          "responseType": "json",
+          "undefined": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "httpAgentflow_0-output-httpAgentflow",
+            "label": "HTTP",
+            "name": "httpAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 272,
+      "height": 66,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": -1047.5956224093657,
+        "y": 106.99745166244347
+      }
+    },
+    {
+      "id": "directReplyAgentflow_0",
+      "position": {
+        "x": 95.68875361454187,
+        "y": 93.41122379587497
+      },
+      "data": {
+        "id": "directReplyAgentflow_0",
+        "label": "Node 6: Display Results",
+        "version": 1,
+        "name": "directReplyAgentflow",
+        "type": "DirectReply",
+        "color": "#4DDBBB",
+        "hideOutput": true,
+        "baseClasses": [
+          "DirectReply"
+        ],
+        "category": "Agent Flows",
+        "description": "Directly reply to the user with a message",
+        "inputParams": [
+          {
+            "label": "Message",
+            "name": "directReplyMessage",
+            "type": "string",
+            "rows": 4,
+            "acceptVariable": true,
+            "id": "directReplyAgentflow_0-input-directReplyMessage-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "directReplyMessage": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"customFunctionAgentflow_0\" data-label=\"customFunctionAgentflow_0\">{{ customFunctionAgentflow_0 }}</span></p>",
+          "undefined": ""
+        },
+        "outputAnchors": [],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 226,
+      "height": 66,
+      "positionAbsolute": {
+        "x": 95.68875361454187,
+        "y": 93.41122379587497
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "customFunctionAgentflow_0",
+      "position": {
+        "x": -690.3351314764107,
+        "y": 108.83151639043211
+      },
+      "data": {
+        "id": "customFunctionAgentflow_0",
+        "label": "Node 3: Filter & Generate URLs",
+        "version": 1,
+        "name": "customFunctionAgentflow",
+        "type": "CustomFunction",
+        "color": "#E4B7FF",
+        "baseClasses": [
+          "CustomFunction"
+        ],
+        "category": "Agent Flows",
+        "description": "Execute custom function",
+        "inputParams": [
+          {
+            "label": "Input Variables",
+            "name": "customFunctionInputVariables",
+            "description": "Input variables can be used in the function with prefix $. For example: $foo",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Variable Name",
+                "name": "variableName",
+                "type": "string"
+              },
+              {
+                "label": "Variable Value",
+                "name": "variableValue",
+                "type": "string",
+                "acceptVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_0-input-customFunctionInputVariables-array",
+            "display": true
+          },
+          {
+            "label": "Javascript Function",
+            "name": "customFunctionJavascriptFunction",
+            "type": "code",
+            "codeExample": "/*\n* You can use any libraries imported in Flowise\n* You can use properties specified in Input Variables with the prefix $. For example: $foo\n* You can get default flow config: $flow.sessionId, $flow.chatId, $flow.chatflowId, $flow.input, $flow.state\n* You can get global variables: $vars.<variable-name>\n* Must return a string value at the end of function\n*/\n\nconst fetch = require('node-fetch');\nconst url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true';\nconst options = {\n    method: 'GET',\n    headers: {\n        'Content-Type': 'application/json'\n    }\n};\ntry {\n    const response = await fetch(url, options);\n    const text = await response.text();\n    return text;\n} catch (error) {\n    console.error(error);\n    return '';\n}",
+            "description": "The function to execute. Must return a string or an object that can be converted to a string.",
+            "id": "customFunctionAgentflow_0-input-customFunctionJavascriptFunction-code",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "customFunctionUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_0-input-customFunctionUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "customFunctionInputVariables": [
+            {
+              "variableName": "httpData",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"httpAgentflow_0\" data-label=\"httpAgentflow_0\">{{ httpAgentflow_0 }}</span> </p>"
+            },
+            {
+              "variableName": "customerId",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$form.customer_id\" data-label=\"$form.customer_id\">{{ $form.customer_id }}</span> </p>"
+            }
+          ],
+          "customFunctionJavascriptFunction": "// Get input variables\nconst httpResponse = $httpData;\nconst customerIdInput = parseInt($customerId);\n\n// Your Supabase configuration\nconst SUPABASE_URL = 'https://nznobqxdsdxaqmocqouv.supabase.co';\n\n// Parse and filter documents from HTTP response\nconst allDocuments = JSON.parse(httpResponse);\nconst filteredDocuments = allDocuments.filter(doc => doc.customer_id === customerIdInput);\n\n// Generate public URLs for all documents\nconst documentsWithUrls = filteredDocuments.map(doc => {\n    // URL encode the file path to handle spaces and special characters\n    const encodedPath = encodeURI(doc.file_path);\n    \n    // Construct public URL with encoded path\n    const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/Insurance-documents/${encodedPath}`;\n    \n    return {\n        document_id: doc.id,\n        customer_name: doc.customer_name,\n        document_type: doc.document_type,\n        file_name: doc.file_name,\n        uploaded_at: doc.uploaded_at,\n        file_path: doc.file_path,\n        public_url: publicUrl\n    };\n});\n\n// Return ONLY the array\nreturn documentsWithUrls;\n",
+          "customFunctionUpdateState": []
+        },
+        "outputAnchors": [
+          {
+            "id": "customFunctionAgentflow_0-output-customFunctionAgentflow",
+            "label": "Custom Function",
+            "name": "customFunctionAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 273,
+      "height": 66,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -690.3351314764107,
+        "y": 108.83151639043211
+      },
+      "dragging": false
+    },
+    {
+      "id": "stickyNoteAgentflow_0",
+      "position": {
+        "x": -589.7814049666542,
+        "y": -246.99846450341323
+      },
+      "data": {
+        "id": "stickyNoteAgentflow_0",
+        "label": "Sticky Note",
+        "version": 1,
+        "name": "stickyNoteAgentflow",
+        "type": "StickyNote",
+        "color": "#fee440",
+        "baseClasses": [
+          "StickyNote"
+        ],
+        "category": "Agent Flows",
+        "description": "Add notes to the agent flow",
+        "inputParams": [
+          {
+            "label": "",
+            "name": "note",
+            "type": "string",
+            "rows": 1,
+            "placeholder": "Type something here",
+            "optional": true,
+            "id": "stickyNoteAgentflow_0-input-note-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "note": "This flow - \n✅ Looping through each document\n✅ Downloading files from Supabase Storage\n✅ Converting to base64 format\n✅ Preparing data for OCR processing "
+        },
+        "outputAnchors": [
+          {
+            "id": "stickyNoteAgentflow_0-output-stickyNoteAgentflow",
+            "label": "Sticky Note",
+            "name": "stickyNoteAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "stickyNote",
+      "width": 241,
+      "height": 223,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": -589.7814049666542,
+        "y": -246.99846450341323
+      }
+    },
+    {
+      "id": "iterationAgentflow_0",
+      "position": {
+        "x": -345.5403590079046,
+        "y": 312.62874550819345
+      },
+      "data": {
+        "id": "iterationAgentflow_0",
+        "label": "Node 4: Iteration Loop",
+        "version": 1,
+        "name": "iterationAgentflow",
+        "type": "Iteration",
+        "color": "#9C89B8",
+        "baseClasses": [
+          "Iteration"
+        ],
+        "category": "Agent Flows",
+        "description": "Execute the nodes within the iteration block through N iterations",
+        "inputParams": [
+          {
+            "label": "Array Input",
+            "name": "iterationInput",
+            "type": "string",
+            "description": "The input array to iterate over",
+            "acceptVariable": true,
+            "rows": 4,
+            "id": "iterationAgentflow_0-input-iterationInput-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "iterationInput": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"customFunctionAgentflow_0\" data-label=\"customFunctionAgentflow_0\">{{ customFunctionAgentflow_0 }}</span> </p>"
+        },
+        "outputAnchors": [
+          {
+            "id": "iterationAgentflow_0-output-iterationAgentflow",
+            "label": "Iteration",
+            "name": "iterationAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "iteration",
+      "width": 423,
+      "height": 251,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -345.5403590079046,
+        "y": 312.62874550819345
+      },
+      "dragging": false,
+      "style": {
+        "width": 423,
+        "height": 251
+      },
+      "resizing": false
+    },
+    {
+      "id": "customFunctionAgentflow_1",
+      "position": {
+        "x": 33.882457569644316,
+        "y": 80.2446837698231
+      },
+      "data": {
+        "id": "customFunctionAgentflow_1",
+        "label": "Node 5: Download & Convert to Base64",
+        "version": 1,
+        "name": "customFunctionAgentflow",
+        "type": "CustomFunction",
+        "color": "#E4B7FF",
+        "baseClasses": [
+          "CustomFunction"
+        ],
+        "category": "Agent Flows",
+        "description": "Execute custom function",
+        "inputParams": [
+          {
+            "label": "Input Variables",
+            "name": "customFunctionInputVariables",
+            "description": "Input variables can be used in the function with prefix $. For example: $foo",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Variable Name",
+                "name": "variableName",
+                "type": "string"
+              },
+              {
+                "label": "Variable Value",
+                "name": "variableValue",
+                "type": "string",
+                "acceptVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_1-input-customFunctionInputVariables-array",
+            "display": true
+          },
+          {
+            "label": "Javascript Function",
+            "name": "customFunctionJavascriptFunction",
+            "type": "code",
+            "codeExample": "/*\n* You can use any libraries imported in Flowise\n* You can use properties specified in Input Variables with the prefix $. For example: $foo\n* You can get default flow config: $flow.sessionId, $flow.chatId, $flow.chatflowId, $flow.input, $flow.state\n* You can get global variables: $vars.<variable-name>\n* Must return a string value at the end of function\n*/\n\nconst fetch = require('node-fetch');\nconst url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true';\nconst options = {\n    method: 'GET',\n    headers: {\n        'Content-Type': 'application/json'\n    }\n};\ntry {\n    const response = await fetch(url, options);\n    const text = await response.text();\n    return text;\n} catch (error) {\n    console.error(error);\n    return '';\n}",
+            "description": "The function to execute. Must return a string or an object that can be converted to a string.",
+            "id": "customFunctionAgentflow_1-input-customFunctionJavascriptFunction-code",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "customFunctionUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_1-input-customFunctionUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "customFunctionInputVariables": [
+            {
+              "variableName": "iterationItem",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$iteration\" data-label=\"$iteration\">{{ $iteration }}</span> </p>"
+            }
+          ],
+          "customFunctionJavascriptFunction": "// Get the current iteration document\nconst document = JSON.parse($iterationItem);\n\n// Fetch the file from the public URL\nconst fetch = require('node-fetch');\n\ntry {\n    const response = await fetch(document.public_url);\n    \n    if (!response.ok) {\n        throw new Error(`Failed to fetch file: ${response.status}`);\n    }\n    \n    // Get the file as a buffer\n    const buffer = await response.buffer();\n    \n    // Convert to base64\n    const base64Data = buffer.toString('base64');\n    \n    // Get file extension from URL or file_name\n    const fileExtension = document.file_name.split('.').pop().toLowerCase();\n    \n    // Return object directly (NOT stringified)\n    return {\n        document_id: document.document_id,\n        file_name: document.file_name,\n        file_type: fileExtension,\n        document_type: document.document_type,\n        file_data: base64Data,\n        file_data_type: 'base64'\n    };\n    \n} catch (error) {\n    // Return error object directly (NOT stringified)\n    return {\n        error: true,\n        message: error.message,\n        document_id: document.document_id,\n        file_name: document.file_name\n    };\n}\n",
+          "customFunctionUpdateState": []
+        },
+        "outputAnchors": [
+          {
+            "id": "customFunctionAgentflow_1-output-customFunctionAgentflow",
+            "label": "Custom Function",
+            "name": "customFunctionAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "parentNode": "iterationAgentflow_0",
+      "extent": "parent",
+      "width": 329,
+      "height": 66,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": -311.6579014382603,
+        "y": 392.87342927801654
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "startAgentflow_0",
+      "sourceHandle": "startAgentflow_0-output-startAgentflow",
+      "target": "httpAgentflow_0",
+      "targetHandle": "httpAgentflow_0",
+      "data": {
+        "sourceColor": "#7EE787",
+        "targetColor": "#FF7F7F",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "startAgentflow_0-startAgentflow_0-output-startAgentflow-httpAgentflow_0-httpAgentflow_0"
+    },
+    {
+      "source": "httpAgentflow_0",
+      "sourceHandle": "httpAgentflow_0-output-httpAgentflow",
+      "target": "customFunctionAgentflow_0",
+      "targetHandle": "customFunctionAgentflow_0",
+      "data": {
+        "sourceColor": "#FF7F7F",
+        "targetColor": "#E4B7FF",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "httpAgentflow_0-httpAgentflow_0-output-httpAgentflow-customFunctionAgentflow_0-customFunctionAgentflow_0"
+    },
+    {
+      "source": "customFunctionAgentflow_0",
+      "sourceHandle": "customFunctionAgentflow_0-output-customFunctionAgentflow",
+      "target": "directReplyAgentflow_0",
+      "targetHandle": "directReplyAgentflow_0",
+      "data": {
+        "sourceColor": "#E4B7FF",
+        "targetColor": "#4DDBBB",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "customFunctionAgentflow_0-customFunctionAgentflow_0-output-customFunctionAgentflow-directReplyAgentflow_0-directReplyAgentflow_0"
+    },
+    {
+      "source": "customFunctionAgentflow_0",
+      "sourceHandle": "customFunctionAgentflow_0-output-customFunctionAgentflow",
+      "target": "iterationAgentflow_0",
+      "targetHandle": "iterationAgentflow_0",
+      "data": {
+        "sourceColor": "#E4B7FF",
+        "targetColor": "#9C89B8",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "customFunctionAgentflow_0-customFunctionAgentflow_0-output-customFunctionAgentflow-iterationAgentflow_0-iterationAgentflow_0"
+    }
+  ]
+}
